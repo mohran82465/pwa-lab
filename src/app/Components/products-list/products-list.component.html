@@ -1,0 +1,60 @@
+<!-- <select
+  class="form-select"
+  aria-label="Default select example"
+  [(ngModel)]="findProd"
+>
+  @for(cat of categoriesList; track cat.id){
+  <option [value]="cat.id">{{ cat.name }}</option>
+  }
+</select> -->
+
+<div class="row">
+  <h2>Date: {{ date | date }}</h2>
+  <h2>Credit Card: {{ creditCard | creditCardFormate }}</h2>
+  @for(prd of productsFilterd; track prd.id){
+  <div
+    class="col-md-4 mb-3"
+    [ngStyle]="{
+      'background-color': prd.quantity <= 1 ? 'lightblue' : 'lightgreen'
+    }"
+  >
+    @if(flag){
+    <img
+      [src]="prd.img"
+      class="img-fluid"
+      appProductCard
+      defaultSadowColor="red"
+    />
+    <h1>{{ prd.name }}</h1>
+    <h2>{{ prd.price | currency }}</h2>
+    @if(prd.quantity == 0){
+    <h3 class="text-danger">Out Of Stock</h3>
+    }@else if (prd.quantity == 1){
+    <h3 class="text-warning">Last Item</h3>
+    }@else if (prd.quantity == 2){
+    <h3 class="text-warning">Last 2 Items</h3>
+    }@else {
+    <h3 class="text-success">In Stock {{ prd.quantity }}</h3>
+    } }@else {
+    <h1>ThankYou{{ clientName }}...</h1>
+    } @if(prd.quantity == 0){
+    <button class="btn btn-danger disabled">
+      AddToCart <i class="fa-sharp fa-solid fa-cart-plus modifyIcon"></i>
+    </button>
+    }@else {
+    <button class="btn btn-success" (click)="addToCart(prd)">
+      AddToCart <i class="fa-sharp fa-solid fa-cart-plus modifyIcon"></i>
+    </button>
+    }
+    <button class="btn btn-primary" [routerLink]="['/products', prd.id]">
+      <!-- <button class="btn btn-primary" (click)="goToProductDetails(prd.id)"> -->
+      Go To Details
+    </button>
+    <button class="btn btn-warning" (click)="updateProduct(prd)">Update</button>
+
+    <button class="btn btn-danger" (click)="deleteProduct(prd.id.toString())">
+      Delete
+    </button>
+  </div>
+  }
+</div>

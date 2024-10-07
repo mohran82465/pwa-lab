@@ -1,0 +1,6 @@
+<!-- <button class="btn btn-primary" (click)="addNewUser()">Add New User</button> -->
+<button class="btn btn-primary" (click)="allUsers()">Add</button>
+
+@for (user of users; track $index) {
+    <h1>{{user.name}}</h1>
+}

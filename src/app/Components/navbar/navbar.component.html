@@ -1,0 +1,65 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <img [src]="logoImg" width="100" />
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarNavAltMarkup"
+    aria-controls="navbarNavAltMarkup"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link" routerLinkActive="active" routerLink="/home"
+        >Home
+      </a>
+      <a
+        class="nav-item nav-link"
+        routerLinkActive="active"
+        routerLink="products"
+        >Products</a
+      >
+      <a class="nav-item nav-link" routerLinkActive="active" routerLink="about"
+        >AboutUs</a
+      >
+      <a
+        class="nav-item nav-link"
+        routerLinkActive="active"
+        routerLink="contact"
+        >ContactUs</a
+      >
+      <a
+        class="nav-item nav-link"
+        routerLinkActive="active"
+        routerLink="Products/add"
+        >AddNewProduct</a
+      >
+      <a
+        class="nav-item nav-link"
+        routerLinkActive="active"
+        routerLink="login"
+        [hidden]="isLogged"
+        >login</a
+      >
+      <a
+        class="nav-item nav-link"
+        routerLinkActive="active"
+        routerLink="login"
+        [hidden]="!isLogged"
+        >logout</a
+      >
+      <a class="nav-item nav-link" routerLinkActive="active" routerLink="user"
+        >User</a
+      >
+      <a
+        class="nav-item nav-link"
+        routerLinkActive="active"
+        routerLink="userReactive"
+        >UserReactive</a
+      >
+    </div>
+  </div>
+</nav>

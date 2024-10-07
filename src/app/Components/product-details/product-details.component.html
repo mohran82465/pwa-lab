@@ -1,0 +1,62 @@
+<div class="col-md-4 mx-auto">
+  <label class="form-label" for="form1">Search By Material</label>
+  <div class="form-outline" data-mdb-input-init>
+    <input
+      id="search-focus"
+      type="search"
+      id="form1"
+      class="form-control rounded-pill"
+      #inputVal
+    />
+  </div>
+  <button
+    type="button"
+    class="btn btn-primary ms-n5 rounded-pill"
+    data-mdb-ripple-init
+    (click)="materialSearch(inputVal.value)"
+  >
+    <i class="fas fa-search"></i>
+  </button>
+</div>
+
+<ul>
+  @for (item of productsAfterSearch; track $index) {
+  <li>{{ item.name }}</li>
+  <li>{{ item.price }}</li>
+  <li>{{ item.quantity }}</li>
+  }
+</ul>
+
+<div class="row mb-5">
+  <div class="col-lg-6">
+    <img [src]="currentProduct?.img" class="img-fluid" />
+  </div>
+  <div class="col-lg-6">
+    <h1>Name: {{ currentProduct?.name }}</h1>
+    <h3>Price: {{ currentProduct?.price }}</h3>
+    <h3>Quantity: {{ currentProduct?.quantity }}</h3>
+    <h3>Material: {{ currentProduct?.Material }}</h3>
+    <p class="text-muted">{{ currentProduct?.descrirption }}</p>
+    <button class="btn btn-success" [routerLink]="['/products']">GoBack</button>
+    <button class="btn btn-primary" (click)="goBack()">GoBack</button>
+  </div>
+</div>
+
+<div class="d-flex justify-content-evenly">
+  <button
+    (click)="prev()"
+    [disabled]="productID == allIDs[0]"
+    type="button"
+    class="btn btn-outline-info"
+  >
+    <<
+  </button>
+  <button
+    (click)="next()"
+    [disabled]="productID == allIDs[allIDs.length - 1]"
+    type="button"
+    class="btn btn-outline-dark"
+  >
+    >>
+  </button>
+</div>

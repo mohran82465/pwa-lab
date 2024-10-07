@@ -1,0 +1,57 @@
+<div class="d-flex justify-content-evenly">
+  <div class="col-8">
+    <h2>Fillter By Select Category</h2>
+    <select
+      class="form-select"
+      aria-label="Default select example"
+      [(ngModel)]="findProd"
+    >
+      @for(cat of categoriesList; track cat.id){
+      <option [value]="cat.id">{{ cat.name }}</option>
+      }
+    </select>
+  </div>
+  <div class="col-4">
+    <h2>Filter By Price</h2>
+    <input class="form-control" type="text" [(ngModel)]="getProductByPrice" />
+  </div>
+</div>
+
+<app-products-list
+  [findProdByCatID]="findProd"
+  [findProdByPrice]="getProductByPrice"
+  (addToCartEvent)="cart($event)"
+>
+</app-products-list>
+
+<table class="table table-striped table-warning">
+  <thead>
+    <tr class="table-info">
+      <td>Name</td>
+      <td>Price $</td>
+      <td>Count</td>
+      <td>Total Price</td>
+      <td colspan="4">Total Orders Price</td>
+    </tr>
+  </thead>
+  <tbody>
+    @for(item of productsInCart; track item.id){
+    <tr class="table-success">
+      <td>{{ item.name }}</td>
+      <td>{{ item.price | currency }}</td>
+      <td>{{ item.count }}</td>
+      <td>{{ item.totalPrdPrice }}</td>
+      <td></td>
+    </tr>
+    }
+  </tbody>
+  <tfoot>
+    <tr class="table-danger">
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>{{ totalOrderPrice }}</td>
+    </tr>
+  </tfoot>
+</table>
